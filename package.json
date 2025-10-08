@@ -2,7 +2,7 @@
 	"name": "create-ignite",
 	"version": "1.0.0",
 	"description": "🚀 Universal CLI to scaffold modern web projects - React, Vue, Next.js, Express, and more with zero configuration",
-	"author": "Your Name <your.email@example.com>",
+	"author": "Kasim Kazmi <kasimkazmi@example.com>",
 	"main": "bin/index.js",
 	"type": "module",
 	"bin": {
@@ -44,11 +44,11 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/yourusername/create-ignite.git"
+		"url": "https://github.com/kasimkazmi/create-ignite.git"
 	},
-	"homepage": "https://create-ignite.dev",
+	"homepage": "https://github.com/kasimkazmi/create-ignite",
 	"bugs": {
-		"url": "https://github.com/yourusername/create-ignite/issues"
+		"url": "https://github.com/kasimkazmi/create-ignite/issues"
 	},
 	"engines": {
 		"node": ">=16.0.0",

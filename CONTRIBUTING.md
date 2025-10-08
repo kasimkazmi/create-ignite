@@ -17,7 +17,7 @@ First off, thank you for considering contributing to CREATE IGNITE! 🎉
 
 ```bash
 # 1. Fork and clone the repository
-git clone https://github.com/YOUR_USERNAME/create-ignite.git
+git clone https://github.com/kasimkazmi/create-ignite.git
 cd create-ignite
 
 # 2. Install dependencies
@@ -151,5 +151,5 @@ Your contributions make CREATE IGNITE better for everyone!
 
 ---
 
-**Questions?** Feel free to ask in [Discussions](https://github.com/yourusername/create-ignite/discussions) or open an issue.
+**Questions?** Feel free to ask in [Discussions](https://github.com/kasimkazmi/create-ignite/discussions) or open an issue.
 

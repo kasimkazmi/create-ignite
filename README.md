@@ -1,4 +1,4 @@
-# 🚀 CREATE IGNITE
+# CREATE IGNITE
 
 <div align="center">
 
@@ -11,28 +11,28 @@
 
 *One command to ignite any project type*
 
-[Quick Start](#-quick-start) • [Features](#-features) • [Documentation](#-documentation) • [Examples](#-examples)
+[Quick Start](#quick-start) • [Features](#features) • [Documentation](#documentation) • [Examples](#examples)
 
 </div>
 
 ---
 
-## 🎯 What is CREATE IGNITE?
+## What is CREATE IGNITE?
 
 **CREATE IGNITE** is a next-generation CLI tool that scaffolds modern web projects in seconds. Whether you're building a React SPA, Vue application, Next.js site, or Express API, `create-ignite` handles everything from initial setup to framework configuration.
 
 ### Why CREATE IGNITE?
 
-✅ **Universal** - Support for React, Vue, Next.js, Nuxt, Express, Fastify  
-✅ **Smart** - Remembers your preferences for faster subsequent setups  
-✅ **Flexible** - Choose your CSS framework, state management, and tools  
-✅ **Modern** - Always uses latest stable versions  
-✅ **Reliable** - Built-in retry logic and comprehensive error handling  
-✅ **Beautiful** - Gorgeous terminal UI with gradients and spinners  
+- **Universal** - Support for React, Vue, Next.js, Nuxt, Express, Fastify  
+- **Smart** - Remembers your preferences for faster subsequent setups  
+- **Flexible** - Choose your CSS framework, state management, and tools  
+- **Modern** - Always uses latest stable versions  
+- **Reliable** - Built-in retry logic and comprehensive error handling  
+- **Beautiful** - Gorgeous terminal UI with gradients and spinners  
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -60,14 +60,14 @@ $ npx create-ignite
 
 ╔═══════════════════════════════════════════════════════════╗
 ║                                                           ║
-║     🚀  CREATE IGNITE  🚀                                 ║
+║          CREATE IGNITE                                    ║
 ║                                                           ║
 ║     Universal Project Scaffolder                         ║
 ║     React • Vue • Next.js • Express & More               ║
 ║                                                           ║
 ╚═══════════════════════════════════════════════════════════╝
 
-📝 Let's create your project!
+Let's create your project!
 
 ? Project name: my-awesome-app
 ? What type of project? Frontend (SPA/SSR)
@@ -83,26 +83,26 @@ $ npx create-ignite
 ? Install ESLint? Yes
 ? Install Prettier? Yes
 
-✨ Project created successfully!
+Project created successfully!
 ```
 
 ---
 
-## ✨ Features
+## Features
 
-### 🎨 Multiple Frameworks
+### Multiple Frameworks
 
 #### Frontend
-- **⚛️ React** (Vite) - Fast, modern React development
-- **🖖 Vue 3** (Vite) - Progressive JavaScript framework  
-- **▲ Next.js** - React framework for production
-- **💚 Nuxt 3** - Intuitive Vue framework
+- **React** (Vite) - Fast, modern React development
+- **Vue 3** (Vite) - Progressive JavaScript framework  
+- **Next.js** - React framework for production
+- **Nuxt 3** - Intuitive Vue framework
 
 #### Backend
-- **🚂 Express** - Fast, unopinionated web framework
-- **⚡ Fastify** - Fast and low overhead web framework
+- **Express** - Fast, unopinionated web framework
+- **Fastify** - Fast and low overhead web framework
 
-### 🎨 CSS Frameworks
+### CSS Frameworks
 
 - **Tailwind CSS v4** - Utility-first CSS with new Vite plugin
 - **Bootstrap 5** - Popular CSS framework
@@ -110,7 +110,7 @@ $ npx create-ignite
 - **Chakra UI** - Modular component library
 - **None** - Vanilla CSS
 
-### 📦 State Management
+### State Management
 
 #### React/Next.js
 - Redux Toolkit
@@ -121,7 +121,7 @@ $ npx create-ignite
 - Pinia (recommended)
 - Vuex
 
-### 🛠️ Optional Features
+### Optional Features
 
 - **Router** - React Router or Vue Router
 - **Icons** - react-icons library
@@ -131,34 +131,103 @@ $ npx create-ignite
 - **TypeScript** - Full TypeScript support
 - **Git** - Automatic repository initialization
 
-### 🌟 Smart Features
+### Smart Features
 
-- **📝 Config Persistence** - Remembers your preferences
-- **🔄 Retry Logic** - Auto-retry failed installations
-- **🎯 Validation** - Validates project names and configurations
-- **🧹 Auto-Cleanup** - Removes boilerplate files
-- **📊 Progress Indicators** - Beautiful loading spinners
-- **🎨 Gradient UI** - Eye-catching terminal interface
-- **⚠️ Error Recovery** - Helpful error messages and tips
-
----
-
-*For full documentation, examples, architecture details, and more, visit the [GitHub repository](https://github.com/yourusername/create-ignite)*
+- **Config Persistence** - Remembers your preferences
+- **Retry Logic** - Auto-retry failed installations
+- **Validation** - Validates project names and configurations
+- **Auto-Cleanup** - Removes boilerplate files
+- **Progress Indicators** - Beautiful loading spinners
+- **Gradient UI** - Eye-catching terminal interface
+- **Error Recovery** - Helpful error messages and tips
 
 ---
 
-## 📄 License
+## Documentation
 
-MIT License - Copyright (c) 2025 CREATE IGNITE Team
+For full documentation, examples, architecture details, and more, visit the [GitHub repository](https://github.com/kasimkazmi/create-ignite).
+
+---
+
+## Examples
+
+### Example 1: React SPA with Full Stack
+
+```bash
+$ npx create-ignite
+
+? Project name: my-react-app
+? Project type: Frontend (SPA/SSR)
+? Framework: React (Vite)
+? Language: TypeScript
+? CSS framework: Tailwind CSS v4
+? State management: Redux Toolkit
+
+Result: React + TypeScript + Tailwind + Redux + Router + Icons + Axios
+```
+
+### Example 2: Express API Server
+
+```bash
+$ npx create-ignite
+
+? Project name: api-server
+? Project type: Backend API
+? Framework: Express
+? Language: TypeScript
+? Install CORS? Yes
+? Install dotenv? Yes
+
+Result: Express + TypeScript + CORS + dotenv + ESLint
+```
+
+---
+
+## Contributing
+
+Contributions are welcome! Please read our [Contributing Guidelines](https://github.com/kasimkazmi/create-ignite/blob/master/CONTRIBUTING.md) before submitting a Pull Request.
+
+---
+
+## License
+
+MIT License - Copyright (c) 2025 Kasim Kazmi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Author
+
+**Kasim Kazmi**
+
+- GitHub: [@kasimkazmi](https://github.com/kasimkazmi)
+- Repository: [create-ignite](https://github.com/kasimkazmi/create-ignite)
 
 ---
 
 <div align="center">
 
-**🔥 Ignite Your Next Project 🔥**
+**Ignite Your Next Project**
 
-Made with ❤️ by the CREATE IGNITE team
+Made with passion by Kasim Kazmi
 
-[Get Started](#-quick-start) • [GitHub](https://github.com/yourusername/create-ignite)
+[Get Started](#quick-start) • [GitHub](https://github.com/kasimkazmi/create-ignite) • [Issues](https://github.com/kasimkazmi/create-ignite/issues)
 
 </div>

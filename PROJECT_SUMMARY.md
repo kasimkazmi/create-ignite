@@ -1,6 +1,6 @@
-# 🚀 CREATE IGNITE - Project Summary
+# CREATE IGNITE - Project Summary
 
-## ✅ Project Completed Successfully!
+## Project Completed Successfully!
 
 **CREATE IGNITE** is now a fully functional, production-ready CLI tool for scaffolding modern web projects.
 
@@ -130,15 +130,10 @@ create-ignite
 ### To Publish to npm
 
 ```bash
-# 1. Update package.json with your details
-#    - author name/email
-#    - repository URL
-#    - homepage URL
-
-# 2. Login to npm
+# 1. Login to npm
 npm login
 
-# 3. Publish
+# 2. Publish
 npm publish
 ```
 
@@ -269,16 +264,16 @@ You now have a **professional, production-ready CLI tool** that:
 For questions or issues:
 - 📖 Read the [README.md](README.md)
 - 🤝 Check [CONTRIBUTING.md](CONTRIBUTING.md)
-- 🐛 Open an issue on GitHub
-- 💬 Start a discussion
+- 🐛 Open an issue on [GitHub](https://github.com/kasimkazmi/create-ignite/issues)
+- 💬 Start a [discussion](https://github.com/kasimkazmi/create-ignite/discussions)
 
 ---
 
 <div align="center">
 
-**🔥 CREATE IGNITE IS READY TO IGNITE! 🔥**
+**CREATE IGNITE IS READY TO IGNITE!**
 
-Made with ❤️ and built to be awesome
+Made with passion by Kasim Kazmi
 
 **Next step: `npm install` → `npm link` → `create-ignite`**
 
