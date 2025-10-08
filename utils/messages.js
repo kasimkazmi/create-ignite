@@ -3,7 +3,6 @@
  */
 
 import chalk from "chalk";
-import gradient from "gradient-string";
 import { execa } from "execa";
 import { FRAMEWORKS, CSS_FRAMEWORKS, LINKS, PACKAGE_MANAGERS } from "./constants.js";
 
@@ -23,13 +22,13 @@ export async function printSuccessMessage(config) {
 	} = config;
 
 	console.log("\n");
-	console.log(gradient.pastel("═".repeat(60)));
-	console.log(gradient.pastel.bold("\n  🎉 SUCCESS! Your project is ready! 🎉\n"));
-	console.log(gradient.pastel("═".repeat(60)));
+	console.log(chalk.bold.cyan("═".repeat(60)));
+	console.log(chalk.bold.green("\n  * SUCCESS! Your project is ready! *\n"));
+	console.log(chalk.bold.cyan("═".repeat(60)));
 	console.log("\n");
 
 	// Project info
-	console.log(chalk.bold("📦 Project Information:\n"));
+	console.log(chalk.bold("[I] Project Information:\n"));
 	console.log(chalk.gray("   Name:         ") + chalk.cyan(projectName));
 	console.log(chalk.gray("   Framework:    ") + chalk.cyan(framework));
 	console.log(chalk.gray("   Language:     ") + chalk.cyan(language === "ts" ? "TypeScript" : "JavaScript"));
@@ -39,7 +38,7 @@ export async function printSuccessMessage(config) {
 	console.log("\n");
 
 	// Next steps
-	console.log(chalk.bold("🚀 Next Steps:\n"));
+	console.log(chalk.bold("[N] Next Steps:\n"));
 	console.log(chalk.cyan("   1. ") + chalk.white(`cd ${projectName}`));
 	
 	const pmRun = packageManager === PACKAGE_MANAGERS.NPM ? "npm run" : packageManager;
@@ -47,14 +46,14 @@ export async function printSuccessMessage(config) {
 	console.log("\n");
 
 	// Available commands
-	console.log(chalk.bold("📝 Available Commands:\n"));
+	console.log(chalk.bold("[C] Available Commands:\n"));
 	console.log(chalk.gray(`   ${pmRun} dev      `) + chalk.white("- Start development server"));
 	console.log(chalk.gray(`   ${pmRun} build    `) + chalk.white("- Build for production"));
 	console.log(chalk.gray(`   ${pmRun} preview  `) + chalk.white("- Preview production build"));
 	console.log("\n");
 
 	// Documentation links
-	console.log(chalk.bold("📚 Useful Documentation:\n"));
+	console.log(chalk.bold("[D] Useful Documentation:\n"));
 	printDocumentationLinks(framework, cssFramework, stateManagement);
 	console.log("\n");
 
@@ -62,14 +61,14 @@ export async function printSuccessMessage(config) {
 	printTips(config);
 
 	console.log(chalk.gray("─".repeat(60)));
-	console.log(chalk.green.bold("\n  ✨ Happy coding! ✨\n"));
+	console.log(chalk.green.bold("\n  * Happy coding! *\n"));
 	console.log(chalk.gray("─".repeat(60)));
 	console.log("\n");
 
 	// Optionally start dev server
 	const shouldStart = await promptStartServer();
 	if (shouldStart) {
-		console.log(chalk.cyan("\n🔥 Starting development server...\n"));
+		console.log(chalk.cyan("\n[*] Starting development server...\n"));
 		await startDevServer(packageManager);
 	}
 }
@@ -145,7 +144,7 @@ function printDocumentationLinks(framework, cssFramework, stateManagement) {
 function printTips(config) {
 	const { framework, cssFramework, installESLint, installPrettier } = config;
 
-	console.log(chalk.bold("💡 Tips:\n"));
+	console.log(chalk.bold("[T] Tips:\n"));
 
 	// Framework-specific tips
 	if (framework === FRAMEWORKS.REACT) {
@@ -202,7 +201,7 @@ async function startDevServer(packageManager) {
 	try {
 		await execa(cmd, args, { stdio: "inherit" });
 	} catch (error) {
-		console.error(chalk.red("\n❌ Failed to start development server"));
+		console.error(chalk.red("\n[X] Failed to start development server"));
 		console.log(chalk.yellow(`\nYou can start it manually with: ${cmd} ${args.join(" ")}\n`));
 	}
 }

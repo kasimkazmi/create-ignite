@@ -21,7 +21,7 @@ import { validateConfiguration } from "./validators.js";
 const configPath = path.join(os.homedir(), CONFIG_FILE_NAME);
 
 export function onCancel() {
-	console.log(chalk.yellow("\n⚠️  Operation cancelled by user"));
+	console.log(chalk.yellow("\n[!] Operation cancelled by user"));
 	process.exit(0);
 }
 
@@ -45,7 +45,7 @@ async function saveConfig(config) {
 	try {
 		await writeFile(configPath, JSON.stringify(config, null, 2), "utf-8");
 	} catch (error) {
-		console.warn(chalk.yellow("⚠️  Could not save configuration"));
+		console.warn(chalk.yellow("[!] Could not save configuration"));
 	}
 }
 
@@ -58,7 +58,7 @@ export async function getUserInputs(projectName) {
 
 	// Ask if user wants to use saved config
 	if (savedConfig) {
-		console.log(chalk.cyan("\n📋 Previous configuration found:\n"));
+		console.log(chalk.cyan("\n[C] Previous configuration found:\n"));
 		console.log(chalk.gray(`   Framework: ${chalk.white(savedConfig.framework || "N/A")}`));
 		console.log(chalk.gray(`   Language: ${chalk.white(savedConfig.language || "N/A")}`));
 		console.log(chalk.gray(`   CSS: ${chalk.white(savedConfig.cssFramework || "N/A")}`));
@@ -362,7 +362,7 @@ export async function getUserInputs(projectName) {
 	// Validate configuration
 	const validationResult = validateConfiguration(config);
 	if (validationResult !== true) {
-		console.error(chalk.red(`\n❌ Configuration error: ${validationResult}`));
+		console.error(chalk.red(`\n[X] Configuration error: ${validationResult}`));
 		process.exit(1);
 	}
 

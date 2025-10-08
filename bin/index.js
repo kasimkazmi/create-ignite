@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import chalk from "chalk";
-import gradient from "gradient-string";
 import ora from "ora";
 import { checkNodeVersion } from "../utils/validators.js";
 import { displayBanner } from "../utils/banner.js";
@@ -29,7 +28,7 @@ async function main() {
 		displayBanner();
 
 		// Get project name
-		logger.info("\n📝 Let's create your project!\n");
+		logger.info("\n[I] Let's create your project!\n");
 		
 		const projectName = await logger.prompt({
 			type: "text",
@@ -69,7 +68,7 @@ async function main() {
 			// Cleanup unnecessary files
 			await cleanupProject(config, spinner);
 
-			spinner.succeed(chalk.green("✨ Project created successfully!"));
+			spinner.succeed(chalk.green("* Project created successfully!"));
 
 			// Print success message with instructions
 			await printSuccessMessage(config);
@@ -87,22 +86,22 @@ async function main() {
 
 // Handle process signals
 process.on("SIGINT", () => {
-	console.log(chalk.yellow("\n\n⚠️  Process interrupted by user"));
+	console.log(chalk.yellow("\n\n[!] Process interrupted by user"));
 	process.exit(0);
 });
 
 process.on("SIGTERM", () => {
-	console.log(chalk.yellow("\n\n⚠️  Process terminated"));
+	console.log(chalk.yellow("\n\n[!] Process terminated"));
 	process.exit(0);
 });
 
 process.on("uncaughtException", (error) => {
-	console.error(chalk.red("\n\n❌ Uncaught Exception:"), error);
+	console.error(chalk.red("\n\n[X] Uncaught Exception:"), error);
 	process.exit(1);
 });
 
 process.on("unhandledRejection", (reason, promise) => {
-	console.error(chalk.red("\n\n❌ Unhandled Rejection at:"), promise, "reason:", reason);
+	console.error(chalk.red("\n\n[X] Unhandled Rejection at:"), promise, "reason:", reason);
 	process.exit(1);
 });
 

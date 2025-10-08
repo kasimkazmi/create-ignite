@@ -7,23 +7,23 @@ import prompts from "prompts";
 
 export class Logger {
 	constructor() {
-		this.prefix = "🔥";
+		this.prefix = "[*]";
 	}
 
 	info(message) {
-		console.log(chalk.blue(`${this.prefix} ${message}`));
+		console.log(chalk.cyan(`${this.prefix} ${message}`));
 	}
 
 	success(message) {
-		console.log(chalk.green(`✔ ${message}`));
+		console.log(chalk.green(`[✓] ${message}`));
 	}
 
 	warning(message) {
-		console.log(chalk.yellow(`⚠️  ${message}`));
+		console.log(chalk.yellow(`[!] ${message}`));
 	}
 
 	error(message) {
-		console.error(chalk.red(`❌ ${message}`));
+		console.error(chalk.red(`[X] ${message}`));
 	}
 
 	step(step, total, message) {

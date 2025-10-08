@@ -12,18 +12,18 @@ export class ErrorHandler {
 	 */
 	static handle(error) {
 		console.error("\n");
-		console.error(chalk.red.bold("❌ Error occurred:"));
+		console.error(chalk.red.bold("[X] Error occurred:"));
 		console.error(chalk.red(error.message || "Unknown error"));
 
 		// Provide helpful hints based on error type
 		if (error.code === "EACCES") {
-			console.error(chalk.yellow("\n💡 Tip: Try running with elevated privileges"));
+			console.error(chalk.yellow("\n[T] Tip: Try running with elevated privileges"));
 		} else if (error.code === "ENOENT") {
-			console.error(chalk.yellow("\n💡 Tip: File or directory not found. Check if path is correct"));
+			console.error(chalk.yellow("\n[T] Tip: File or directory not found. Check if path is correct"));
 		} else if (error.message.includes("ENOTFOUND") || error.message.includes("network")) {
-			console.error(chalk.yellow("\n💡 Tip: Check your internet connection and try again"));
+			console.error(chalk.yellow("\n[T] Tip: Check your internet connection and try again"));
 		} else if (error.message.includes("npm") || error.message.includes("install")) {
-			console.error(chalk.yellow("\n💡 Tip: Try clearing npm cache: npm cache clean --force"));
+			console.error(chalk.yellow("\n[T] Tip: Try clearing npm cache: npm cache clean --force"));
 		}
 
 		// Stack trace in debug mode
