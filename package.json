@@ -1,0 +1,71 @@
+{
+	"name": "create-ignite",
+	"version": "1.0.0",
+	"description": "🚀 Universal CLI to scaffold modern web projects - React, Vue, Next.js, Express, and more with zero configuration",
+	"author": "Your Name <your.email@example.com>",
+	"main": "bin/index.js",
+	"type": "module",
+	"bin": {
+		"create-ignite": "bin/index.js",
+		"ignite": "bin/index.js"
+	},
+	"scripts": {
+		"test": "vitest",
+		"test:coverage": "vitest --coverage",
+		"lint": "eslint bin utils",
+		"format": "prettier --write \"**/*.{js,json,md}\"",
+		"prepare": "node scripts/prepare.js"
+	},
+	"files": [
+		"bin/",
+		"templates/",
+		"utils/",
+		"README.md",
+		"LICENSE"
+	],
+	"keywords": [
+		"cli",
+		"scaffold",
+		"boilerplate",
+		"starter",
+		"template",
+		"react",
+		"vue",
+		"nextjs",
+		"express",
+		"vite",
+		"typescript",
+		"tailwindcss",
+		"bootstrap",
+		"create-app",
+		"project-generator",
+		"ignite"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/yourusername/create-ignite.git"
+	},
+	"homepage": "https://create-ignite.dev",
+	"bugs": {
+		"url": "https://github.com/yourusername/create-ignite/issues"
+	},
+	"engines": {
+		"node": ">=16.0.0",
+		"npm": ">=7.0.0"
+	},
+	"dependencies": {
+		"chalk": "^5.6.2",
+		"execa": "^9.6.0",
+		"gradient-string": "^2.0.2",
+		"ora": "^8.1.1",
+		"prompts": "^2.4.2",
+		"semver": "^7.6.3",
+		"validate-npm-package-name": "^5.0.1"
+	},
+	"devDependencies": {
+		"eslint": "^9.18.0",
+		"prettier": "^3.4.2",
+		"vitest": "^2.1.8"
+	}
+}

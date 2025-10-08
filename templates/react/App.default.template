@@ -1,0 +1,27 @@
+function App() {
+	return (
+		<div 
+			style={{
+				minHeight: "100vh",
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+				background: "linear-gradient(to bottom right, #3b82f6, #9333ea)",
+				color: "white",
+				textAlign: "center"
+			}}
+		>
+			<div>
+				<h1 style={{ fontSize: "2.5rem", fontWeight: "bold", marginBottom: "1rem" }}>
+					🚀 Welcome to Your App!
+				</h1>
+				<p style={{ fontSize: "1.2rem", opacity: 0.9 }}>
+					Built with React + Vite
+				</p>
+			</div>
+		</div>
+	);
+}
+
+export default App;
+
