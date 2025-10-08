@@ -1,5 +1,5 @@
 {
-	"name": "create-ignite",
+	"name": "@kasimkazmi/create-ignite",
 	"version": "1.0.7",
 	"description": "🚀 Universal CLI to scaffold modern web projects - React, Vue, Next.js, Express, and more with zero configuration",
 	"author": "Kasim Kazmi <kasimkazmi@example.com>",
@@ -8,6 +8,9 @@
 	"bin": {
 		"create-ignite": "bin/index.js",
 		"ignite": "bin/index.js"
+	},
+	"publishConfig": {
+		"access": "public"
 	},
 	"scripts": {
 		"test": "vitest",
