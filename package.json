@@ -1,6 +1,6 @@
 {
 	"name": "create-ignite",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "🚀 Universal CLI to scaffold modern web projects - React, Vue, Next.js, Express, and more with zero configuration",
 	"author": "Kasim Kazmi <kasimkazmi@example.com>",
 	"main": "bin/index.js",
