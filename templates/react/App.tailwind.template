@@ -1,15 +1,41 @@
+import React from 'react';
+import './styles/globals.css';
+
+// Components
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Hero from './components/Hero';
+
 function App() {
-	return (
-		<div className="min-h-screen flex bg-gradient-to-br from-blue-500 to-purple-600 text-white items-center justify-center">
-			<div className="text-center">
-				<h1 className="text-4xl font-bold mb-4">🚀 Welcome to Your App!</h1>
-				<p className="text-lg opacity-90">
-					Built with React + Vite + Tailwind CSS
-				</p>
-			</div>
-		</div>
-	);
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600">
+      <Header />
+      <main className="container mx-auto px-4 py-8">
+        <Hero />
+        <section className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
+            <h3 className="text-xl font-semibold mb-4">Fast Development</h3>
+            <p className="text-white/80">
+              Built with Vite for lightning-fast development and hot module replacement.
+            </p>
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
+            <h3 className="text-xl font-semibold mb-4">Modern Stack</h3>
+            <p className="text-white/80">
+              Uses the latest React features with TypeScript and Tailwind CSS.
+            </p>
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
+            <h3 className="text-xl font-semibold mb-4">Production Ready</h3>
+            <p className="text-white/80">
+              Optimized build process with tree-shaking and code splitting.
+            </p>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
-

@@ -1,0 +1,61 @@
+import React from 'react';
+
+const features = [
+  {
+    title: 'App Router',
+    description: 'Built with Next.js 15 App Router for optimal performance and developer experience.',
+    icon: '🚀',
+  },
+  {
+    title: 'TypeScript',
+    description: 'Full TypeScript support with strict type checking and excellent IDE integration.',
+    icon: '⚡',
+  },
+  {
+    title: 'Tailwind CSS',
+    description: 'Utility-first CSS framework for rapid UI development and consistent design.',
+    icon: '🎨',
+  },
+  {
+    title: 'ESLint & Prettier',
+    description: 'Pre-configured code quality tools for consistent and clean code.',
+    icon: '🔧',
+  },
+  {
+    title: 'Performance Optimized',
+    description: 'Optimized for Core Web Vitals with automatic code splitting and image optimization.',
+    icon: '⚡',
+  },
+  {
+    title: 'SEO Ready',
+    description: 'Built-in SEO optimization with metadata API and structured data support.',
+    icon: '📈',
+  },
+];
+
+const Features = () => {
+  return (
+    <section className="py-16">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          Why Choose This Template?
+        </h2>
+        <p className="text-white/80 text-lg max-w-2xl mx-auto">
+          Built with modern web technologies and best practices for optimal performance and developer experience.
+        </p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map((feature, index) => (
+          <div key={index} className="card text-white">
+            <div className="text-4xl mb-4">{feature.icon}</div>
+            <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+            <p className="text-white/70">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default Features;

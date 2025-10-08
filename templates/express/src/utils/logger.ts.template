@@ -1,0 +1,34 @@
+import winston from 'winston';
+
+const { combine, timestamp, errors, json, printf, colorize } = winston.format;
+
+// Custom format for development
+const devFormat = printf(({ level, message, timestamp, stack }) => {
+  return `${timestamp} [${level}]: ${stack || message}`;
+});
+
+// Create logger instance
+export const logger = winston.createLogger({
+  level: process.env.LOG_LEVEL || 'info',
+  format: combine(
+    timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    errors({ stack: true }),
+    process.env.NODE_ENV === 'development' 
+      ? combine(colorize(), devFormat)
+      : json()
+  ),
+  defaultMeta: { service: '{{projectName}}' },
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'logs/combined.log' }),
+  ],
+});
+
+// Create logs directory if it doesn't exist
+import { mkdirSync } from 'fs';
+try {
+  mkdirSync('logs', { recursive: true });
+} catch (error) {
+  // Directory already exists or permission error
+}

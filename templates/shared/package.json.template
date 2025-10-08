@@ -1,0 +1,60 @@
+{
+  "name": "{{projectName}}",
+  "version": "1.0.0",
+  "description": "{{description}}",
+  "type": "module",
+  "main": "{{mainFile}}",
+  "scripts": {
+    "dev": "{{devCommand}}",
+    "build": "{{buildCommand}}",
+    "start": "{{startCommand}}",
+    "preview": "{{previewCommand}}",
+    "test": "{{testCommand}}",
+    "test:watch": "{{testWatchCommand}}",
+    "test:coverage": "{{testCoverageCommand}}",
+    "lint": "{{lintCommand}}",
+    "lint:fix": "{{lintFixCommand}}",
+    "format": "{{formatCommand}}",
+    "type-check": "{{typeCheckCommand}}"
+  },
+  "keywords": [
+    "{{framework}}",
+    "{{language}}",
+    "{{cssFramework}}",
+    "frontend",
+    "web",
+    "application"
+  ],
+  "author": "{{author}}",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "{{repositoryUrl}}"
+  },
+  "bugs": {
+    "url": "{{issuesUrl}}"
+  },
+  "homepage": "{{homepageUrl}}",
+  "dependencies": {
+    {{dependencies}}
+  },
+  "devDependencies": {
+    {{devDependencies}}
+  },
+  "engines": {
+    "node": ">={{nodeVersion}}",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+import { Router } from 'express';
+import userRoutes from './users';
+import authRoutes from './auth';
+
+const router = Router();
+
+// API version info
+router.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to the API',
+    version: '1.0.0',
+    documentation: '/api/docs',
+    health: '/health',
+  });
+});
+
+// Route modules
+router.use('/users', userRoutes);
+router.use('/auth', authRoutes);
+
+export default router;
