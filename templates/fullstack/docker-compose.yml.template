@@ -1,0 +1,91 @@
+version: '3.8'
+
+services:
+  # Frontend Application
+  frontend:
+    build:
+      context: ./apps/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "{{frontendPort}}:{{frontendPort}}"
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://localhost:{{backendPort}}/api
+    volumes:
+      - ./apps/frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  # Backend API
+  backend:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    ports:
+      - "{{backendPort}}:{{backendPort}}"
+    environment:
+      - NODE_ENV=development
+      - PORT={{backendPort}}
+      - DATABASE_URL=postgresql://postgres:password@db:5432/{{projectName}}
+      - JWT_SECRET=your-jwt-secret-key
+      - CORS_ORIGIN=http://localhost:{{frontendPort}}
+    volumes:
+      - ./apps/backend:/app
+      - /app/node_modules
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  # Database
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB={{projectName}}
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./apps/backend/migrations:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+
+  # Redis (Optional - for caching)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+
+  # Nginx (Production)
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - app-network
+    profiles:
+      - production
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,28 @@
+{
+  "name": "@{{projectName}}/frontend",
+  "version": "1.0.0",
+  "description": "Frontend application for {{projectName}}",
+  "type": "module",
+  "scripts": {
+    "dev": "{{frontendDevCommand}}",
+    "build": "{{frontendBuildCommand}}",
+    "start": "{{frontendStartCommand}}",
+    "preview": "{{frontendPreviewCommand}}",
+    "test": "{{frontendTestCommand}}",
+    "test:watch": "{{frontendTestWatchCommand}}",
+    "test:coverage": "{{frontendTestCoverageCommand}}",
+    "lint": "{{frontendLintCommand}}",
+    "lint:fix": "{{frontendLintFixCommand}}",
+    "format": "{{frontendFormatCommand}}",
+    "type-check": "{{frontendTypeCheckCommand}}"
+  },
+  "dependencies": {
+    {{frontendDependencies}}
+  },
+  "devDependencies": {
+    {{frontendDevDependencies}}
+  },
+  "engines": {
+    "node": ">={{nodeVersion}}"
+  }
+}

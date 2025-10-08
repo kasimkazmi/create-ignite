@@ -1,0 +1,139 @@
+// Shared types between frontend and backend
+
+export interface User {
+  id: string;
+  email: string;
+  name: string;
+  avatar?: string;
+  role: 'user' | 'admin';
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface AuthResponse {
+  user: User;
+  token: string;
+  refreshToken: string;
+}
+
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+export interface RegisterRequest {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export interface ApiResponse<T = any> {
+  success: boolean;
+  data?: T;
+  error?: string;
+  message?: string;
+}
+
+export interface PaginatedResponse<T> extends ApiResponse<T[]> {
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
+}
+
+export interface ErrorResponse {
+  success: false;
+  error: string;
+  message?: string;
+  details?: any;
+}
+
+// Common query parameters
+export interface PaginationParams {
+  page?: number;
+  limit?: number;
+  sortBy?: string;
+  sortOrder?: 'asc' | 'desc';
+}
+
+export interface SearchParams extends PaginationParams {
+  search?: string;
+  filter?: Record<string, any>;
+}
+
+// HTTP status codes
+export enum HttpStatus {
+  OK = 200,
+  CREATED = 201,
+  NO_CONTENT = 204,
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  FORBIDDEN = 403,
+  NOT_FOUND = 404,
+  CONFLICT = 409,
+  UNPROCESSABLE_ENTITY = 422,
+  INTERNAL_SERVER_ERROR = 500,
+}
+
+// Environment types
+export interface Environment {
+  NODE_ENV: 'development' | 'production' | 'test';
+  PORT: number;
+  DATABASE_URL: string;
+  JWT_SECRET: string;
+  CORS_ORIGIN: string;
+}
+
+// Frontend specific types
+export interface FrontendConfig {
+  apiUrl: string;
+  appName: string;
+  version: string;
+  environment: string;
+}
+
+// Backend specific types
+export interface DatabaseConfig {
+  host: string;
+  port: number;
+  database: string;
+  username: string;
+  password: string;
+  ssl?: boolean;
+}
+
+export interface JWTConfig {
+  secret: string;
+  expiresIn: string;
+  refreshExpiresIn: string;
+}
+
+// Validation types
+export interface ValidationError {
+  field: string;
+  message: string;
+  value?: any;
+}
+
+export interface ValidationResult {
+  isValid: boolean;
+  errors: ValidationError[];
+}
+
+// Event types for real-time features
+export interface WebSocketEvent {
+  type: string;
+  payload: any;
+  timestamp: Date;
+}
+
+export interface NotificationEvent extends WebSocketEvent {
+  type: 'notification';
+  payload: {
+    title: string;
+    message: string;
+    level: 'info' | 'success' | 'warning' | 'error';
+  };
+}

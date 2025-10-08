@@ -1,0 +1,148 @@
+// Authentication middleware
+import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
+import { UserModel } from '../models/User';
+import { ApiResponse } from '@{{projectName}}/shared';
+
+interface AuthenticatedRequest extends Request {
+  user?: {
+    id: string;
+    email: string;
+    role: string;
+  };
+}
+
+/**
+ * Verify JWT token and attach user to request
+ */
+export const authenticateToken = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
+
+    if (!token) {
+      res.status(401).json({
+        success: false,
+        error: 'Access token is required',
+      } as ApiResponse);
+      return;
+    }
+
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as any;
+    
+    // Get user from database
+    const user = await UserModel.findById(decoded.userId).select('-password');
+    if (!user) {
+      res.status(401).json({
+        success: false,
+        error: 'Invalid token - user not found',
+      } as ApiResponse);
+      return;
+    }
+
+    // Attach user to request
+    req.user = {
+      id: user._id.toString(),
+      email: user.email,
+      role: user.role,
+    };
+
+    next();
+  } catch (error) {
+    if (error instanceof jwt.JsonWebTokenError) {
+      res.status(401).json({
+        success: false,
+        error: 'Invalid token',
+      } as ApiResponse);
+      return;
+    }
+
+    if (error instanceof jwt.TokenExpiredError) {
+      res.status(401).json({
+        success: false,
+        error: 'Token expired',
+      } as ApiResponse);
+      return;
+    }
+
+    console.error('Authentication error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Authentication failed',
+    } as ApiResponse);
+  }
+};
+
+/**
+ * Check if user has required role
+ */
+export const requireRole = (roles: string | string[]) => {
+  return (req: AuthenticatedRequest, res: Response, next: NextFunction): void => {
+    if (!req.user) {
+      res.status(401).json({
+        success: false,
+        error: 'Authentication required',
+      } as ApiResponse);
+      return;
+    }
+
+    const userRole = req.user.role;
+    const allowedRoles = Array.isArray(roles) ? roles : [roles];
+
+    if (!allowedRoles.includes(userRole)) {
+      res.status(403).json({
+        success: false,
+        error: 'Insufficient permissions',
+      } as ApiResponse);
+      return;
+    }
+
+    next();
+  };
+};
+
+/**
+ * Check if user is admin
+ */
+export const requireAdmin = requireRole('admin');
+
+/**
+ * Check if user is authenticated (user or admin)
+ */
+export const requireAuth = requireRole(['user', 'admin']);
+
+/**
+ * Optional authentication - doesn't fail if no token provided
+ */
+export const optionalAuth = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (token) {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET!) as any;
+      const user = await UserModel.findById(decoded.userId).select('-password');
+      
+      if (user) {
+        req.user = {
+          id: user._id.toString(),
+          email: user.email,
+          role: user.role,
+        };
+      }
+    }
+  } catch (error) {
+    // Ignore token errors for optional auth
+  }
+
+  next();
+};

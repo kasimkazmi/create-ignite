@@ -1,11 +1,78 @@
 <template>
-	<div class="min-h-screen flex bg-gradient-to-br from-blue-500 to-purple-600 text-white items-center justify-center">
-		<div class="text-center">
-			<h1 class="text-4xl font-bold mb-4">🚀 Welcome to Your App!</h1>
-			<p class="text-lg opacity-90">
-				Built with Vue 3 + Vite + Tailwind CSS
-			</p>
-		</div>
+	<div class="min-h-screen bg-gray-50">
+		<!-- Header -->
+		<header class="bg-white border-b border-gray-200">
+			<div class="container mx-auto px-4 py-4">
+				<nav class="flex items-center justify-between">
+					<div class="flex items-center space-x-2">
+						<div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+							<span class="text-white font-bold text-sm">V</span>
+						</div>
+						<span class="text-gray-900 font-semibold text-lg">Vue App</span>
+					</div>
+					<div class="hidden md:flex items-center space-x-6">
+						<a href="#home" class="text-gray-700 hover:text-green-600 transition-colors">Home</a>
+						<a href="#about" class="text-gray-700 hover:text-green-600 transition-colors">About</a>
+						<a href="#contact" class="text-gray-700 hover:text-green-600 transition-colors">Contact</a>
+					</div>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Main Content -->
+		<main class="container mx-auto px-4 py-16">
+			<div class="text-center">
+				<h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+					Welcome to Your
+					<span class="block text-green-600">Vue App</span>
+				</h1>
+				<p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+					A modern, fast, and reactive Vue 3 application built with the latest technologies.
+					Ready to help you build amazing user interfaces with composition API and TypeScript.
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center">
+					<button class="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+						Get Started
+					</button>
+					<button class="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+						Learn More
+					</button>
+				</div>
+			</div>
+
+			<!-- Features Section -->
+			<section class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<div class="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow">
+					<h3 class="text-xl font-semibold mb-4 text-gray-900">Reactive Framework</h3>
+					<p class="text-gray-600">
+						Built with Vue 3's Composition API for reactive and maintainable code.
+					</p>
+				</div>
+				<div class="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow">
+					<h3 class="text-xl font-semibold mb-4 text-gray-900">Modern Tooling</h3>
+					<p class="text-gray-600">
+						Uses Vite for lightning-fast development and hot module replacement.
+					</p>
+				</div>
+				<div class="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow">
+					<h3 class="text-xl font-semibold mb-4 text-gray-900">Production Ready</h3>
+					<p class="text-gray-600">
+						Optimized build process with tree-shaking and code splitting.
+					</p>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer class="bg-gray-900 border-t border-gray-200 mt-16">
+			<div class="container mx-auto px-4 py-8">
+				<div class="text-center">
+					<p class="text-gray-500 text-sm">
+						© 2024 Vue App. Built with CREATE IGNITE.
+					</p>
+				</div>
+			</div>
+		</footer>
 	</div>
 </template>
 

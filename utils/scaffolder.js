@@ -7,6 +7,7 @@ import path from "path";
 import chalk from "chalk";
 import { FRAMEWORKS } from "./constants.js";
 import { ErrorHandler } from "./errorHandler.js";
+import { scaffoldFullStack } from "./fullstack.js";
 
 const CURRENT_DIR = process.cwd();
 
@@ -43,12 +44,16 @@ export async function scaffoldProject(config, spinner) {
 				await scaffoldExpress(projectName, language, spinner);
 				break;
 
-			case FRAMEWORKS.FASTIFY:
-				await scaffoldFastify(projectName, language, spinner);
-				break;
+		case FRAMEWORKS.FASTIFY:
+			await scaffoldFastify(projectName, language, spinner);
+			break;
 
-			default:
-				throw new Error(`Unsupported framework: ${framework}`);
+		case FRAMEWORKS.FULLSTACK:
+			await scaffoldFullStack(projectName, language, spinner, config);
+			break;
+
+		default:
+			throw new Error(`Unsupported framework: ${framework}`);
 		}
 
 		// Change to project directory

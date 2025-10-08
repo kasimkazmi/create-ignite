@@ -8,26 +8,26 @@ import Hero from './components/Hero';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600">
+    <div className="min-h-screen bg-gray-50">
       <Header />
       <main className="container mx-auto px-4 py-8">
         <Hero />
         <section className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
-            <h3 className="text-xl font-semibold mb-4">Fast Development</h3>
-            <p className="text-white/80">
+          <div className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow">
+            <h3 className="text-xl font-semibold mb-4 text-gray-900">Fast Development</h3>
+            <p className="text-gray-600">
               Built with Vite for lightning-fast development and hot module replacement.
             </p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
-            <h3 className="text-xl font-semibold mb-4">Modern Stack</h3>
-            <p className="text-white/80">
+          <div className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow">
+            <h3 className="text-xl font-semibold mb-4 text-gray-900">Modern Stack</h3>
+            <p className="text-gray-600">
               Uses the latest React features with TypeScript and Tailwind CSS.
             </p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
-            <h3 className="text-xl font-semibold mb-4">Production Ready</h3>
-            <p className="text-white/80">
+          <div className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow">
+            <h3 className="text-xl font-semibold mb-4 text-gray-900">Production Ready</h3>
+            <p className="text-gray-600">
               Optimized build process with tree-shaking and code splitting.
             </p>
           </div>

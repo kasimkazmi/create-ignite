@@ -1,0 +1,160 @@
+// API service layer for frontend
+import type { 
+  ApiResponse, 
+  AuthResponse, 
+  LoginRequest, 
+  RegisterRequest,
+  User,
+  PaginatedResponse,
+  PaginationParams
+} from '@{{projectName}}/shared';
+
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:{{backendPort}}/api';
+
+class ApiService {
+  private baseURL: string;
+  private token: string | null = null;
+
+  constructor(baseURL: string = API_BASE_URL) {
+    this.baseURL = baseURL;
+    this.token = localStorage.getItem('auth_token');
+  }
+
+  private async request<T>(
+    endpoint: string,
+    options: RequestInit = {}
+  ): Promise<ApiResponse<T>> {
+    const url = `${this.baseURL}${endpoint}`;
+    
+    const config: RequestInit = {
+      headers: {
+        'Content-Type': 'application/json',
+        ...(this.token && { Authorization: `Bearer ${this.token}` }),
+        ...options.headers,
+      },
+      ...options,
+    };
+
+    try {
+      const response = await fetch(url, config);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || `HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      return data;
+    } catch (error) {
+      console.error('API request failed:', error);
+      throw error;
+    }
+  }
+
+  // Authentication methods
+  async login(credentials: LoginRequest): Promise<AuthResponse> {
+    const response = await this.request<AuthResponse>('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify(credentials),
+    });
+
+    if (response.success && response.data) {
+      this.setToken(response.data.token);
+    }
+
+    return response.data!;
+  }
+
+  async register(userData: RegisterRequest): Promise<AuthResponse> {
+    const response = await this.request<AuthResponse>('/auth/register', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+    });
+
+    if (response.success && response.data) {
+      this.setToken(response.data.token);
+    }
+
+    return response.data!;
+  }
+
+  async logout(): Promise<void> {
+    try {
+      await this.request('/auth/logout', { method: 'POST' });
+    } finally {
+      this.clearToken();
+    }
+  }
+
+  async refreshToken(): Promise<AuthResponse> {
+    const refreshToken = localStorage.getItem('refresh_token');
+    if (!refreshToken) {
+      throw new Error('No refresh token available');
+    }
+
+    const response = await this.request<AuthResponse>('/auth/refresh', {
+      method: 'POST',
+      body: JSON.stringify({ refreshToken }),
+    });
+
+    if (response.success && response.data) {
+      this.setToken(response.data.token);
+    }
+
+    return response.data!;
+  }
+
+  // User methods
+  async getCurrentUser(): Promise<User> {
+    const response = await this.request<User>('/auth/me');
+    return response.data!;
+  }
+
+  async getUsers(params?: PaginationParams): Promise<PaginatedResponse<User>> {
+    const queryString = params ? '?' + new URLSearchParams(params as any).toString() : '';
+    const response = await this.request<PaginatedResponse<User>>(`/users${queryString}`);
+    return response.data!;
+  }
+
+  async getUser(id: string): Promise<User> {
+    const response = await this.request<User>(`/users/${id}`);
+    return response.data!;
+  }
+
+  async updateUser(id: string, userData: Partial<User>): Promise<User> {
+    const response = await this.request<User>(`/users/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(userData),
+    });
+    return response.data!;
+  }
+
+  async deleteUser(id: string): Promise<void> {
+    await this.request(`/users/${id}`, { method: 'DELETE' });
+  }
+
+  // Utility methods
+  setToken(token: string): void {
+    this.token = token;
+    localStorage.setItem('auth_token', token);
+  }
+
+  clearToken(): void {
+    this.token = null;
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('refresh_token');
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.token;
+  }
+
+  // Health check
+  async healthCheck(): Promise<{ status: string; timestamp: string }> {
+    const response = await this.request<{ status: string; timestamp: string }>('/health');
+    return response.data!;
+  }
+}
+
+// Create and export a singleton instance
+export const apiService = new ApiService();
+export default apiService;

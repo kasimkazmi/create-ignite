@@ -9,6 +9,7 @@ export const FRAMEWORKS = {
 	NUXT: "nuxt",
 	EXPRESS: "express",
 	FASTIFY: "fastify",
+	FULLSTACK: "fullstack",
 };
 
 export const CSS_FRAMEWORKS = {
@@ -77,6 +78,7 @@ export const LINKS = {
 	NUXT: "https://nuxt.com/docs",
 	EXPRESS: "https://expressjs.com/",
 	FASTIFY: "https://fastify.dev/",
+	FULLSTACK: "https://github.com/kasimkazmi/create-ignite",
 	VITE: "https://vitejs.dev/guide/",
 	TAILWIND: "https://tailwindcss.com/docs",
 	BOOTSTRAP: "https://getbootstrap.com/docs/",

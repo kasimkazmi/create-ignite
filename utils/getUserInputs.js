@@ -101,19 +101,18 @@ export async function getUserInputs(projectName) {
 					description: "Express, Fastify",
 					value: PROJECT_TYPES.BACKEND,
 				},
-				{
-					title: "Full-stack (coming soon)",
-					description: "Complete application with frontend + backend",
-					value: PROJECT_TYPES.FULLSTACK,
-					disabled: true,
-				},
+			{
+				title: "Full-Stack Application",
+				description: "Complete monorepo with frontend + backend",
+				value: PROJECT_TYPES.FULLSTACK,
+			},
 			],
 			initial: 0,
 		},
 		{ onCancel }
 	);
 
-	let framework, cssFramework, stateManagement, installRouter, installIcons, installAxios;
+	let framework, cssFramework, stateManagement, installRouter, installIcons, installAxios, language;
 
 	// Frontend-specific prompts
 	if (projectType === PROJECT_TYPES.FRONTEND) {
@@ -290,6 +289,79 @@ export async function getUserInputs(projectName) {
 		installRouter = false;
 		installIcons = false;
 		installAxios = false;
+	}
+
+	// Full-stack specific prompts
+	if (projectType === PROJECT_TYPES.FULLSTACK) {
+		const fullstackAnswers = await prompts(
+			[
+				{
+					type: "select",
+					name: "language",
+					message: "Which language?",
+					choices: [
+						{ title: "TypeScript", value: LANGUAGES.TYPESCRIPT },
+						{ title: "JavaScript", value: LANGUAGES.JAVASCRIPT },
+					],
+					initial: 0,
+				},
+				{
+					type: "select",
+					name: "cssFramework",
+					message: "Which CSS framework for frontend?",
+					choices: [
+						{
+							title: "Tailwind CSS v4",
+							description: "Utility-first CSS with Vite plugin",
+							value: CSS_FRAMEWORKS.TAILWIND,
+						},
+						{
+							title: "Bootstrap 5",
+							description: "Popular CSS framework",
+							value: CSS_FRAMEWORKS.BOOTSTRAP,
+						},
+						{
+							title: "None",
+							description: "Vanilla CSS",
+							value: CSS_FRAMEWORKS.NONE,
+						},
+					],
+					initial: 0,
+				},
+				{
+					type: "select",
+					name: "stateManagement",
+					message: "State management for frontend?",
+					choices: [
+						{
+							title: "Redux Toolkit",
+							description: "Official Redux with toolkit",
+							value: STATE_MANAGEMENT.REDUX,
+						},
+						{
+							title: "Zustand",
+							description: "Simple and fast state management",
+							value: STATE_MANAGEMENT.ZUSTAND,
+						},
+						{
+							title: "None",
+							description: "Use React hooks only",
+							value: STATE_MANAGEMENT.NONE,
+						},
+					],
+					initial: 0,
+				},
+			],
+			{ onCancel }
+		);
+
+		framework = FRAMEWORKS.FULLSTACK;
+		cssFramework = fullstackAnswers.cssFramework;
+		stateManagement = fullstackAnswers.stateManagement;
+		language = fullstackAnswers.language;
+		installRouter = true;
+		installIcons = true;
+		installAxios = true;
 	}
 
 	// Common prompts

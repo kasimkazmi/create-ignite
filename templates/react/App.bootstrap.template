@@ -5,7 +5,7 @@ function App() {
 			style={{ minHeight: "100vh" }}
 		>
 			<div className="text-center">
-				<h1 className="display-4 fw-bold mb-4">🚀 Welcome to Your App!</h1>
+				<h1 className="display-4 fw-bold mb-4">Welcome to Your App!</h1>
 				<p className="lead">
 					Built with React + Vite + Bootstrap
 				</p>

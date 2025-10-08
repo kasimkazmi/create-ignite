@@ -1,0 +1,30 @@
+{
+  "name": "@{{projectName}}/backend",
+  "version": "1.0.0",
+  "description": "Backend API for {{projectName}}",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "{{backendDevCommand}}",
+    "build": "{{backendBuildCommand}}",
+    "start": "{{backendStartCommand}}",
+    "test": "{{backendTestCommand}}",
+    "test:watch": "{{backendTestWatchCommand}}",
+    "test:coverage": "{{backendTestCoverageCommand}}",
+    "lint": "{{backendLintCommand}}",
+    "lint:fix": "{{backendLintFixCommand}}",
+    "format": "{{backendFormatCommand}}",
+    "type-check": "{{backendTypeCheckCommand}}",
+    "db:migrate": "{{dbMigrateCommand}}",
+    "db:seed": "{{dbSeedCommand}}"
+  },
+  "dependencies": {
+    {{backendDependencies}}
+  },
+  "devDependencies": {
+    {{backendDevDependencies}}
+  },
+  "engines": {
+    "node": ">={{nodeVersion}}"
+  }
+}

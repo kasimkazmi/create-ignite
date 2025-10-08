@@ -6,12 +6,12 @@ const Hero = () => {
       <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
         Welcome to Your
         <span className="block text-blue-600">
-          React App
+          Next.js App
         </span>
       </h1>
       <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-        A modern, fast, and scalable React application built with the latest technologies.
-        Ready to help you build amazing user experiences.
+        A modern, fast, and scalable Next.js application built with the latest technologies.
+        Ready to help you build amazing web experiences with server-side rendering and static generation.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">

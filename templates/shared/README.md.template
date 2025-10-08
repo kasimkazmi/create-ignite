@@ -2,7 +2,7 @@
 
 {{description}}
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -43,7 +43,7 @@ cd {{projectName}}
 └── package.json          # Dependencies and scripts
 ```
 
-## 🛠️ Available Scripts
+## Available Scripts
 
 - `{{packageManager}} run dev` - Start development server
 - `{{packageManager}} run build` - Build for production
@@ -52,7 +52,7 @@ cd {{projectName}}
 - `{{packageManager}} run lint` - Run linter
 - `{{packageManager}} run format` - Format code
 
-## 🎨 Tech Stack
+## Tech Stack
 
 - **Framework**: {{framework}}
 - **Language**: {{language}}
