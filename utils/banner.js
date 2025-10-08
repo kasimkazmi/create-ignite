@@ -3,32 +3,55 @@
  */
 
 import chalk from "chalk";
-import gradient from "gradient-string";
 
 export function displayBanner() {
 	const banner = `
-╔═══════════════════════════════════════════════════════════╗
-║                                                           ║
-║     🚀  CREATE IGNITE  🚀                                 ║
-║                                                           ║
-║     Universal Project Scaffolder                         ║
-║     React • Vue • Next.js • Express & More               ║
-║                                                           ║
-╚═══════════════════════════════════════════════════════════╝
+    ╭────────────────────────────────────────────────────────╮
+    │                                                        │
+    │    ╔══════════════════════════════════════════════╗    │
+    │    ║                                              ║ 	 │
+    │    ║    🚀  CREATE IGNITE  🚀                    ║ 	│
+    │    ║                                              ║ 	 │
+    │    ║    Universal Project Scaffolder              ║ 	 │
+    │    ║    React • Vue • Next.js • Express & More    ║ 	 │
+    │    ║                                              ║ 	 │
+    │    ╚══════════════════════════════════════════════╝ 	 │
+    │                                                        │
+    ╰────────────────────────────────────────────────────────╯
 	`;
 
-	console.log(gradient.pastel.multiline(banner));
+	// Create a more attractive multi-colored banner
+	console.log(chalk.bold.blue("╭─────────────────────────────────────────────────────╮"));
+	console.log(chalk.bold.blue("│                                                     │"));
+	console.log(chalk.bold.cyan("│    ╔══════════════════════════════════════════════╗ │"));
+	console.log(chalk.bold.cyan("│    ║                                              ║ │"));
+	console.log(chalk.bold.white("│    ║    ") + chalk.bold.yellow("🚀") + chalk.bold.white("  ") + chalk.bold.cyan("CREATE IGNITE") + chalk.bold.white("  ") + chalk.bold.yellow("🚀") + chalk.bold.white("                    ║ │"));
+	console.log(chalk.bold.cyan("│    ║                                              ║ │"));
+	console.log(chalk.bold.white("│    ║    ") + chalk.bold.green("Universal Project Scaffolder") + chalk.bold.white("             ║ │"));
+	console.log(chalk.bold.white("│    ║    ") + chalk.bold.magenta("React • Vue • Next.js • Express & More") + chalk.bold.white("   ║ │"));
+	console.log(chalk.bold.cyan("│    ║                                              ║ │"));
+	console.log(chalk.bold.cyan("│    ╚══════════════════════════════════════════════╝ │"));
+	console.log(chalk.bold.blue("│                                                     │"));
+	console.log(chalk.bold.blue("╰─────────────────────────────────────────────────────╯"));
+	console.log(chalk.bold.gray("  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"));
+	console.log();
 	console.log(
-		chalk.gray("  Version: ") +
-		chalk.cyan("1.0.0") +
-		chalk.gray(" | ") +
-		chalk.gray("License: ") +
-		chalk.cyan("MIT")
+		chalk.bold.gray("  📦 Version: ") +
+		chalk.bold.cyan("1.0.1") +
+		chalk.bold.gray("  │  ") +
+		chalk.bold.gray("📄 License: ") +
+		chalk.bold.cyan("MIT") +
+		chalk.bold.gray("  │  ") +
+		chalk.bold.gray("⚡ Node: ") +
+		chalk.bold.green("16.0.0+")
 	);
 	console.log(
-		chalk.gray("  GitHub: ") +
-		chalk.blue("https://github.com/yourusername/create-ignite")
+		chalk.bold.gray("  🔗 GitHub: ") +
+		chalk.bold.blue.underline("https://github.com/kasimkazmi/create-ignite")
 	);
+	console.log();
+	console.log(chalk.bold.yellow("  ✨ Let's create your project! ✨"));
+	console.log();
 }
 
 export function displayFrameworkBanner(framework) {
